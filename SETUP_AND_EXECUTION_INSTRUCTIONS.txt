@@ -1,0 +1,124 @@
+================================================================================
+          AI PATH FINDER - LOCAL SETUP & EXECUTION INSTRUCTIONS
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+AI Path Finder is a personalized learning platform that builds dynamic, 
+8-factor weighted roadmaps, visualizes skill gaps with radar charts, and adapts 
+in real-time to learner feedback with 24/7 grounded AI mentorship.
+
+Repository: https://github.com/arunkumarar45/AI-Path-Finder.git
+
+
+================================================================================
+1. SYSTEM PREREQUISITES
+================================================================================
+Ensure the following tools are installed on your machine:
+  - Python 3.10 or higher (https://www.python.org/downloads/)
+  - Node.js 18.x or higher (https://nodejs.org/)
+  - Git (https://git-scm.com/)
+
+
+================================================================================
+2. STEP-BY-STEP SETUP INSTRUCTIONS
+================================================================================
+
+STEP 2.1: CLONE REPOSITORY
+--------------------------
+Open your terminal / command prompt and run:
+  git clone https://github.com/arunkumarar45/AI-Path-Finder.git
+  cd AI-Path-Finder
+
+
+STEP 2.2: BACKEND SETUP (FastAPI)
+---------------------------------
+1. Navigate to the backend directory:
+     cd backend
+
+2. (Recommended) Create and activate a virtual environment:
+     - On Windows (PowerShell):
+         python -m venv venv
+         .\venv\Scripts\Activate.ps1
+     - On macOS / Linux:
+         python3 -m venv venv
+         source venv/bin/activate
+
+3. Install backend dependencies:
+     pip install -r requirements.txt
+   
+   Or install directly:
+     pip install fastapi uvicorn sqlalchemy pydantic pydantic-settings aiosqlite python-dotenv httpx python-multipart
+
+4. (Optional) Configure Google Gemini AI:
+   Copy the example environment file:
+     cp .env.example .env
+   
+   Edit .env and add your free Google AI Studio key:
+     AI_PROVIDER=gemini
+     AI_API_KEY=your_gemini_api_key_here
+
+   * Note: The application is 100% functional even WITHOUT an API key 
+     due to its built-in deterministic offline fallback engine.
+
+5. Start the FastAPI backend server:
+     python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+
+   Backend URLs:
+     - API Base URL:       http://localhost:8000
+     - Interactive Swagger: http://localhost:8000/docs
+     - Health Endpoint:     http://localhost:8000/api/health
+
+
+STEP 2.3: FRONTEND SETUP (React + Vite)
+---------------------------------------
+1. Open a NEW / SECOND terminal window and navigate to the frontend directory:
+     cd frontend
+
+2. Install Node dependencies:
+     npm install
+
+3. Start the Vite React development server:
+     npm run dev
+
+   Frontend URL:
+     - Web Application:    http://localhost:5173
+
+
+================================================================================
+3. DEMO WALKTHROUGH (ALEX CHEN PERSONA)
+================================================================================
+1. Open http://localhost:5173 in your web browser.
+2. Click "Try Demo (Alex Chen)" on the welcome screen.
+3. Explore the pre-loaded learner features:
+   - Skill Gap Radar: Compare baseline skills against target role requirements.
+   - Smart Roadmap: Toggle phase items, prerequisites, and milestone projects.
+   - Adaptive Feedback: Rate topics as "Too Hard", "Too Easy", or "Skip" to 
+     trigger real-time curriculum reorganization.
+   - AI Mentor Chat: Ask context-grounded questions about your roadmap and code.
+   - Assessment Studio: Complete quizzes to automatically update skill scores.
+
+
+================================================================================
+4. PRESENTATION & SLIDES GENERATION
+================================================================================
+To generate or update the PowerPoint presentation (.pptx):
+1. Install python-pptx:
+     pip install python-pptx
+2. Run the generator script in the project root:
+     python generate_ppt.py
+3. Output file:
+     AI_Path_Finder_Presentation.pptx
+
+
+================================================================================
+5. COMMON TROUBLESHOOTING
+================================================================================
+- Port 8000 or 5173 in use:
+  Change port via:
+    Backend:  python -m uvicorn app.main:app --port 8080
+    Frontend: npm run dev -- --port 3000
+
+- PowerShell execution policy error with virtualenv:
+  Run: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+================================================================================
