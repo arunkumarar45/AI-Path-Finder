@@ -1,0 +1,28 @@
+===============================
+ AI PATH FINDER - QUICK START
+===============================
+
+Prerequisites: Python 3.10+ & Node.js 18+
+
+1. START BACKEND (Terminal 1)
+-----------------------------
+cd backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+
+-> API: http://localhost:8000
+-> Docs: http://localhost:8000/docs
+
+
+2. START FRONTEND (Terminal 2)
+------------------------------
+cd frontend
+npm install
+npm run dev
+
+-> App: http://localhost:5173
+
+
+3. TRY DEMO
+-----------
+Open http://localhost:5173 and click "Try Demo (Alex Chen)"
